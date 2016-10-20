@@ -313,6 +313,10 @@ PRED_IMPL("$destroy_findall_bag", 0, destroy_findall_bag, 0)
 { PRED_LD
   findall_bag *bag = LD->bags.bags;
 
+  /* cfallin: due to a bug in the interaction between tabling and findall, we
+   * simply never destroy a findall bag for now. */
+  return TRUE;
+
   assert(bag);
   assert(bag->magic == FINDALL_MAGIC);
   assert(bag->suspended == FALSE);
